@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Car Reservation Form</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label, input, select {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        input, select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            width: 200px;
+        }
+
+        button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+
+        button:active {
+            background-color: #c0c0c0;
+        }
+
+        /*Table*/
+        .pricing {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .pricing table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        .pricing th, .pricing td {
+            border: 1px solid white;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .pricing th {
+            background-color: #333;
+        }
+
+        .pricing td {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Reservation</h1>
+    <form method="POST" action="/reserve">
+        <label for="driver_name">Driver Name:</label>
+        <input type="text" id="driver_name" name="driver_name" required>
+
+        <label for="vehicle_type">Car Type:</label>
+        <select id="vehicle_type" name="vehicle_type" required>
+            <option value="Van">Van</option>
+            <option value="SUV">SUV</option>
+            <option value="Pickup">Pickup</option>
+            <option value="Sedan">Sedan</option>
+        </select>
+
+        <label for="reservation_start">Start Date:</label>
+        <input type="date" id="reservation_start" name="reservation_start" required min="{{today}}">
+
+        <label for="reservation_end">End Date:</label>
+        <input type="date" id="reservation_end" name="reservation_end" required>
+
+        <button type="submit">Submit Reservation</button>
+    </form>
+
+    <div class="pricing">
+        <h2>Pricing Information</h2>
+        <table>
+            <tr>
+                <th>Car Type</th>
+                <th>Daily Rate</th>
+            </tr>
+            <tr>
+                <td>Sedan</td>
+                <td>$100/day</td>
+            </tr>
+            <tr>
+                <td>SUV</td>
+                <td>$300/day</td>
+            </tr>
+            <tr>
+                <td>Pickup</td>
+                <td>$150/day</td>
+            </tr>
+            <tr>
+                <td>Van</td>
+                <td>$500/day</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

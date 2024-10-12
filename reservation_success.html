@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Reservation Success</title>         <!--Design-->
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        h1, p {
+            margin-bottom: 20px;
+        }
+
+        strong {
+            font-size: 18px;
+        }
+
+        button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+
+        button:active {
+            background-color: #c0c0c0;
+        }
+    </style>
+</head>
+<body> <!--Reservation code-->
+    <h1>Reservation Successful!</h1>
+    <p>Your reservation code is: <strong>{{ reservation_code }}</strong></p>
+    <p>This is a code to extend your reservation late if needed.</p>
+
+    <button onclick="window.location.href='/'">Go back to Home</button>
+</body>
+</html>

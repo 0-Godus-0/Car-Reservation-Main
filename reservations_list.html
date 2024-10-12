@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Reservations List</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        td {
+            background-color: #444;
+        }
+
+        form {
+            display: inline-block;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+
+        button:active {
+            background-color: #c0c0c0;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #777;
+        }
+
+        a:active {
+            background-color: #999;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Reservation List</h1>
+    <table>
+        <tr>
+            <th>Driver Name</th>
+            <th>Vehicle Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {% for reservation in reservations %}
+        <tr>
+            <td>{{ reservation['driver_name'] }}</td>
+            <td>{{ reservation['vehicle_type'] }}</td>
+            <td>{{ reservation['reservation_start'] }}</td>
+            <td>{{ reservation['reservation_end'] }}</td>
+            <td>{{ reservation['status'] }}</td>
+            <td>
+                <form method="POST" action="/update_status">
+                    <input type="hidden" name="reservation_id" value="{{ reservation['id'] }}">
+                    <select name="new_status">
+                        <option value="confirmed">Confirm</option>
+                        <option value="declined">Decline</option>
+                    </select>
+                    <button type="submit">Update Status</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %} <!--fixes-->
+    </table>
+
+    <p><a href="/logout">Logout</a></p>
+</body>
+</html>
